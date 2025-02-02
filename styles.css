@@ -1,0 +1,152 @@
+/* 🌸 ESTILO GENERAL */
+body {
+    background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExejBuZHZyem03eTFvZnlzenhxODJuZDNxamh3YWJyNThzbXFsd21iYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTcnT2ZYSaCTdkTSmI/giphy.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+/* 📩 SOBRE */
+.envelope {
+    position: relative;
+    width: 520px;
+    height: 320px;
+    background: #ff4d6d;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+/* 📜 CARTA (Ahora realmente dentro del sobre) */
+.letter {
+    background: rgb(17, 14, 14);
+    width: 380px;
+    padding: 60px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(240, 238, 238, 0.949);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%); /* Ahora inicia dentro */
+    transition: transform 0.5s ease-in-out;
+    z-index: 1; /* Debe estar detrás de la solapa y del sobre */
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-10%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent; /* Lados del triángulo */
+    border-right: 10px solid transparent; /* Lados del triángulo */
+    border-bottom: 10px solid #d13856; /* Color y tamaño del triángulo */
+    z-index: 2;
+
+    /* Animación arriba y abajo */
+    animation: flapMove 1.5s infinite ease-in-out;
+}
+
+/* 🎥 ANIMACIÓN */
+@keyframes flapMove {
+    0%, 100% {
+        transform: translate(-50%, 4px); /* Posición inicial */
+    }
+    50% {
+        transform: translate(-50%, 0); /* Sube ligeramente */
+    }
+}
+
+/* 📌 PARTE FRONTAL DEL SOBRE (Para que la carta realmente esté dentro) */
+/* 📩 SOBRE (Centrado en la pantalla) */
+.envelope {
+    position: absolute; /* Permite mover libremente */
+    top: 50%;           /* Lleva el sobre al 50% de la altura */
+    left: 50%;          /* Lleva el sobre al 50% del ancho */
+    transform: translate(-50%, -50%); /* Centra exactamente */
+    width: 520px;
+    height: 320px;
+    background: #ff4d6d;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+/* 🎭 ANIMACIÓN: Ahora la carta sale correctamente */
+.envelope:hover .letter {
+    transform: translateY(-1%);
+}
+
+.envelope:hover .flap {
+    transform: rotateX(180deg);
+}
+
+/* 🎥 BOTÓN */
+.video-btn {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.video-btn:hover {
+    background: #d13856;
+}
+
+/* 🎬 VIDEO EMERGENTE */
+.video-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.video-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+/* ❌ BOTÓN CERRAR */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* 📜 TEXTO DE LA CARTA */
+h1 {
+    font-size: 1.2rem;
+    color: #ff4d6d;
+}
+
+p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.signature {
+    font-style: italic;
+    margin-top: 10px;
+    color: #555;
+}
